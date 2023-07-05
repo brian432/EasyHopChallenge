@@ -1,0 +1,71 @@
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-weight: 600;
+}
+
+.formWrapper {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 25px;
+}
+
+.inputsContainer {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: .1rem;
+}
+
+.inputsContainer input,
+select {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--primary-color);
+  padding: 5px;
+  font-size: 1rem;
+  background: none;
+  width: 100%;
+}
+
+select {
+  cursor: pointer;
+}
+
+.inputsContainer input:focus,
+select:focus {
+  border-bottom: 3px solid var(--hover-input);
+}
+
+.inputsContainer input:focus~.label,
+select:focus~.label,
+option {
+  color: var(--hover-input);
+}
+
+.inputsContainer .campoObligatorio {
+  border-bottom: 3px solid var(--error-color) !important;
+}
+
+.inputsContainer .campoObligatorio~.label {
+  color: var(--error-color) !important;
+}
+
+.inputsContainer .errorColor {
+  color: var(--error-color);
+  margin-top: .5rem;
+  font-size: 1.2rem;
+}
+
+@media screen and (min-width: 424px) {
+  .formWrapper {
+    box-shadow: 3px 5px #000;
+  }
+}

@@ -1,0 +1,14 @@
+.home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  overflow-y: auto;
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(3rem, 5vw, 4rem);
+}
