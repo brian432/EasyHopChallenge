@@ -5,7 +5,6 @@ import { FormDataContext, IFormData } from '../../context/formState'
 import { swalAlert } from '../../utils/swal'
 import './form.css'
 import ErrorMessage from '../ErrorMessage/ErrorMessage'
-import ButtonSubmit from '../ButtonSubmit/ButtonSubmit'
 
 const ContactForm: FC = ({ }) => {
   const { dispatch } = useContext(FormDataContext)
@@ -62,12 +61,16 @@ const ContactForm: FC = ({ }) => {
                 </Field>
                 <label htmlFor='contactPreference' className='label'>Contact Preference</label>
               </div>
-              <ButtonSubmit  {...{ isValid, dirty }} />
+              <div className='divButton' >
+                <button type='submit' className={!isValid || !dirty ? 'disabled' : 'btn'} disabled={!isValid || !dirty}>
+                  Submit
+                </button>
+              </div>
             </Form>
           )
         }
       </Formik>
-    </main>
+    </main >
   )
 }
 export default ContactForm

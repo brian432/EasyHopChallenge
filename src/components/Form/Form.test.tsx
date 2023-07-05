@@ -1,22 +1,10 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-
 import Form from './Form'
+
 
 describe('Form', () => {
   const fields = ['Full Name', 'Phone', 'Contact Preference']
-
-  it('displays error message for phoneNumber field', async () => {
-    const phoneNumberField = screen.getByLabelText('Phone')
-
-    fireEvent.change(phoneNumberField, { target: { value: 'abc' } }) //simular ingreso de caracteres que no sean numeros al phoneInput
-    fireEvent.blur(phoneNumberField)
-
-    await waitFor(() => {
-      const errorText = screen.getByText('Enter only numbers')
-      expect(errorText).toBeDefined()
-    })
-  })
   it('renders without errors', () => {
     render(<Form />)
 
@@ -43,14 +31,25 @@ describe('Form', () => {
     })
   })
 
+  it('displays error message for phoneNumber field', async () => {
+    render(<Form />)
+    const phoneNumberField = screen.getByLabelText('Phone')
 
+    fireEvent.change(phoneNumberField, { target: { value: 'asc' } }) //simular ingreso de caracteres que no sean numeros al phoneInput
+    fireEvent.blur(phoneNumberField)
+
+    await waitFor(() => {
+      const errorText = screen.getByText('Enter only numbers')
+      expect(errorText).toBeDefined()
+    })
+  })
   it('verifies presence and enabled/disabled state of submit button based on form validity', async () => {
     render(<Form />)
 
     const fullNameInput = screen.getByLabelText('Full Name')
     const phoneNumberInput = screen.getByLabelText('Phone')
     const contactPreferenceField = screen.getByLabelText('Contact Preference')
-    const buttonSubmit = screen.getAllByRole('button', { name: 'Submit' })
+    const buttonSubmit = screen.getByRole('button', { name: 'Submit' })
 
     // Verificar que el botón de envío esté presente
     expect(buttonSubmit).toBeDefined()

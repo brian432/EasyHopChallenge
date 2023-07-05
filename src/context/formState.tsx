@@ -1,4 +1,4 @@
-import React, { Dispatch, createContext, useReducer, ReactNode, FC } from 'react'
+import { Dispatch, createContext, useReducer, ReactNode, FC } from 'react'
 
 interface Action {
   type: 'updateFormData'

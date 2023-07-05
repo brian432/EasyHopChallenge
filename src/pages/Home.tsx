@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import ContactForm from '../components/Form/Form'
 import './home.css'
 interface HomeProps { }
